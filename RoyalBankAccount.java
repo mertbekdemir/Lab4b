@@ -216,7 +216,7 @@ public class RoyalBankAccount
             throw new IllegalArgumentException("Negative withdrawals not allowed");
         }
 
-        boolean isOverDraftWithdrawalAllowed = this.isOverdraftAvailable && (withdrawalUsd <= (this.balanceUsd + this.overdraftAmountUsd));
+        boolean isOverDraftWithdrawalAllowed = this.isOverdraftAvailable && (withdrawalUsd >= (this.balanceUsd + this.overdraftAmountUsd));
         boolean isRegularWithdrawalAllowed = !this.isOverdraftAvailable && (withdrawalUsd <= this.balanceUsd);
 
         if (isOverDraftWithdrawalAllowed || isRegularWithdrawalAllowed) {
